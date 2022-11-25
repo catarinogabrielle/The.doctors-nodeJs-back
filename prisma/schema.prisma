@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//criar uma migration: yarn prisma migrate dev
+model User {
+  id          String    @id @default(uuid())
+  name        String
+  email       String
+  password    String
+  mycourse_id String[]
+  type        String    @default("student")
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
+
+  @@map("users")
+}
+
+//---curso
+model Myclasse {
+  id           String    @id @default(uuid())
+  title        String
+  image        String
+  teacherphoto String
+  teacherwork  String
+  teachername  String
+  teacherinfo  String
+  description  String
+  time         String
+  created_at   DateTime? @default(now())
+  updated_at   DateTime? @default(now())
+  classes      Classe[]
+
+  @@map("myclasses")
+}
+
+//---aula
+model Classe {
+  id          String    @id @default(uuid())
+  title       String
+  status      Boolean   @default(false)
+  draft       Boolean   @default(true)
+  material    String
+  description String
+  created_at  DateTime? @default(now())
+  updated_at  DateTime? @default(now())
+
+  myclasse    Myclasse @relation(fields: [myclasse_id], references: [id])
+  myclasse_id String
+
+  @@map("classes")
+}
