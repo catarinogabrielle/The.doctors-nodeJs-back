@@ -1,21 +1,20 @@
-import prismaClient from "../../prisma"
+import prismaClient from "../../prisma";
 
 class FindClasseService {
-    async execute( title: string) {
+  async execute(title: any) {
+    if (title === "") return await prismaClient.myclasse.findMany();
 
-        // const allClasses = await prismaClient.myclasse.find();
+    const searchedClasess = await prismaClient.myclasse.findMany({
+      where: {
+        title: {
+          contains: title,
+          mode: "insensitive",
+        },
+      },
+    });
 
-        const searchedClasess = await prismaClient.myclasse.findMany({
-            where: {
-                title: {
-                    contains: title
-                }
-            }
-        });
-
-        return searchedClasess;
-
-    }
+    return searchedClasess;
+  }
 }
 
-export { FindClasseService }
+export { FindClasseService };
