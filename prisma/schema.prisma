@@ -12,14 +12,15 @@ datasource db {
 
 //criar uma migration: yarn prisma migrate dev
 model User {
-  id          String    @id @default(uuid())
-  name        String
-  email       String
-  password    String
-  mycourse_id String[]
-  type        String    @default("student")
-  created_at  DateTime? @default(now())
-  updated_at  DateTime? @default(now())
+  id                 String    @id @default(uuid())
+  name               String
+  email              String
+  password           String
+  mycourse_id        String[]
+  stripe_customer_id String?
+  type               String    @default("student")
+  created_at         DateTime? @default(now())
+  updated_at         DateTime? @default(now())
 
   @@map("users")
 }
