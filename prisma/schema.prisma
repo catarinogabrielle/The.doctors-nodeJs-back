@@ -12,17 +12,31 @@ datasource db {
 
 //criar uma migration: yarn prisma migrate dev
 model User {
-  id                 String    @id @default(uuid())
+  id                 String        @id @default(uuid())
   name               String
   email              String
   password           String
   mycourse_id        String[]
   stripe_customer_id String?
-  type               String    @default("student")
-  created_at         DateTime? @default(now())
-  updated_at         DateTime? @default(now())
+  type               String        @default("student")
+  created_at         DateTime?     @default(now())
+  updated_at         DateTime?     @default(now())
+  Subscription       Subscription?
 
   @@map("users")
+}
+
+model Subscription {
+  id         String    @id @default(uuid())
+  status     String
+  priceId    String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  @@map("subscriptions")
 }
 
 //---curso
@@ -50,6 +64,7 @@ model Classe {
   status      Boolean   @default(false)
   draft       Boolean   @default(true)
   material    String
+  link        String
   description String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
