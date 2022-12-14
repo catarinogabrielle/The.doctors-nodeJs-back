@@ -15,6 +15,7 @@ import { CreateClasseController } from './controllers/classe/CreateClasseControl
 import { ListByMyClasseController } from './controllers/classe/ListByMyClasseController'
 
 import { SubscribeController } from './controllers/subscription/SubscribeController'
+import { WebhooksController } from './controllers/subscription/WebhooksController'
 
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
@@ -38,5 +39,6 @@ router.post('/classes', isAuthenticated, upload.single('material'), new CreateCl
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
 
 router.post('/subscribe', isAuthenticated, new SubscribeController().handle)
+router.post('/webhooks', new WebhooksController().handle)
 
 export { router };
