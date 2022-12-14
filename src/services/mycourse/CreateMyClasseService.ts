@@ -9,10 +9,11 @@ interface MyclasseRequest {
     teacherinfo: string;
     description: string;
     time: string;
+    link: string;
 }
 
 class CreateMyClasseService {
-    async execute({ title, image, teacherphoto, teachername, teacherinfo, teacherwork, description, time }: MyclasseRequest) {
+    async execute({ title, link, image, teacherphoto, teachername, teacherinfo, teacherwork, description, time }: MyclasseRequest) {
 
         // verificar se ele colocou um titulo
         if (title === '') {
@@ -29,6 +30,7 @@ class CreateMyClasseService {
                 teacherinfo: teacherinfo,
                 description: description,
                 time: time,
+                link: link,
             },
             select: {
                 title: true,
@@ -39,6 +41,7 @@ class CreateMyClasseService {
                 teacherinfo: true,
                 description: true,
                 time: true,
+                link: true
             }
         })
 

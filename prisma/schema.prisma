@@ -50,6 +50,7 @@ model Myclasse {
   teacherinfo  String
   description  String
   time         String
+  link        String
   created_at   DateTime? @default(now())
   updated_at   DateTime? @default(now())
   classes      Classe[]
