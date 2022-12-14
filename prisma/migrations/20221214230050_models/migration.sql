@@ -36,6 +36,7 @@ CREATE TABLE "myclasses" (
     "teacherinfo" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "time" TEXT NOT NULL,
+    "link" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 

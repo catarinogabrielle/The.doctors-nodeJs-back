@@ -3,7 +3,7 @@ import { CreateMyClasseService } from '../../services/mycourse/CreateMyClasseSer
 
 class CreateMyClasseController {
     async handle(req: Request, res: Response) {
-        const { title, teachername, teacherinfo, teacherwork, description, time } = req.body;
+        const { title, teachername, teacherinfo, teacherwork, description, time, link } = req.body;
 
         const createMyClasseService = new CreateMyClasseService();
 
@@ -24,6 +24,7 @@ class CreateMyClasseController {
                 teacherinfo,
                 description,
                 time,
+                link
             });
 
             return res.json(myclasse);
