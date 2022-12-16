@@ -6,13 +6,13 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 //criar uma migration: yarn prisma migrate dev
 model User {
-  id                 String        @id @default(uuid())
+  id                 String        @id @default(auto()) @map("_id") @db.ObjectId
   name               String
   email              String
   password           String
@@ -27,7 +27,7 @@ model User {
 }
 
 model Subscription {
-  id         String    @id
+  id         String    @id @map("_id") @db.ObjectId
   status     String
   priceId    String
   created_at DateTime? @default(now())
@@ -40,7 +40,7 @@ model Subscription {
 
 //---curso
 model Myclasse {
-  id           String    @id @default(uuid())
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
   title        String
   image        String
   teacherphoto String
@@ -59,7 +59,7 @@ model Myclasse {
 
 //---aula
 model Classe {
-  id          String    @id @default(uuid())
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   status      Boolean   @default(false)
   draft       Boolean   @default(true)
@@ -73,3 +73,13 @@ model Classe {
 
   @@map("classes")
 }
+
+
+
+
+//datasource db {
+ // provider = "postgresql"
+  //url      = env("DATABASE_URL")
+//}
+  //id                 String        @id @default(uuid())
+  
