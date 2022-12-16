@@ -5,7 +5,7 @@ interface SubscribeRequest {
     user_id: string;
 }
 
-class SubscribeService {
+class SubscribeMensalService {
     async execute({ user_id }: SubscribeRequest) {
 
         const stripe = new Stripe(
@@ -49,7 +49,7 @@ class SubscribeService {
             payment_method_types: ['card'],
             billing_address_collection: 'required',
             line_items: [
-                { price: process.env.STRIPE_PRICE, quantity: 1 }
+                { price: process.env.STRIPE_PRICE_MENSAL, quantity: 1 }
             ],
             mode: 'subscription',
             allow_promotion_codes: true,
@@ -61,4 +61,4 @@ class SubscribeService {
     }
 }
 
-export { SubscribeService } 
+export { SubscribeMensalService } 

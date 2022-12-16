@@ -14,7 +14,7 @@ import { FindClasseController } from './controllers/mycourse/FindClasseControlle
 import { CreateClasseController } from './controllers/classe/CreateClasseController'
 import { ListByMyClasseController } from './controllers/classe/ListByMyClasseController'
 
-import { SubscribeController } from './controllers/subscription/SubscribeController'
+import { SubscribeAnualController, SubscribeMensalController } from './controllers/subscription/SubscribeController'
 import { WebhooksController } from './controllers/subscription/WebhooksController'
 import { CreatePortalController } from './controllers/subscription/CreatePortalController'
 
@@ -39,7 +39,8 @@ router.get('/myclasses/search', isAuthenticated, new FindClasseController().hand
 router.post('/classes', isAuthenticated, upload.single('material'), new CreateClasseController().handle)
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
 
-router.post('/subscribe', isAuthenticated, new SubscribeController().handle)
+router.post('/subscribe/yearly', isAuthenticated, new SubscribeAnualController().handle)
+router.post('/subscribe/monthly', isAuthenticated, new SubscribeMensalController().handle)
 router.post('/webhooks', express.raw({ type: 'application/json' }), new WebhooksController().handle)
 router.post('/create-portal', isAuthenticated, new CreatePortalController().handle)
 

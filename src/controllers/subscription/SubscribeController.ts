@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { SubscribeService } from "../../services/subscriptions/SubscribeService";
+import { SubscribeAnualService } from "../../services/subscriptions/SubscribeAnualService";
+import { SubscribeMensalService } from "../../services/subscriptions/SubscribeMensalService";
 
-class SubscribeController {
+class SubscribeAnualController {
     async handle(request: Request, response: Response) {
         const user_id = request.user_id
 
-        const subscribeService = new SubscribeService()
+        const subscribeService = new SubscribeAnualService()
 
         const subscribe = await subscribeService.execute({
             user_id
@@ -15,4 +16,18 @@ class SubscribeController {
     }
 }
 
-export { SubscribeController }
+class SubscribeMensalController {
+    async handle(request: Request, response: Response) {
+        const user_id = request.user_id
+
+        const subscribeService = new SubscribeMensalService()
+
+        const subscribe = await subscribeService.execute({
+            user_id
+        })
+
+        return response.json(subscribe);
+    }
+}
+
+export { SubscribeAnualController, SubscribeMensalController }
