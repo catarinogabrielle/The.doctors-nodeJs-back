@@ -12,7 +12,14 @@ class DetailUserService {
                 name: true,
                 email: true,
                 type: true,
-                mycourse_id: true
+                mycourse_id: true,
+                subscriptions: {
+                    select: {
+                        id: true,
+                        priceId: true,
+                        status: true,
+                    }
+                }
             }
         })
 
