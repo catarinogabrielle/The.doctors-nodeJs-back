@@ -1,4 +1,4 @@
-import { Router } from "express";
+import express, { Router, Request, Response } from 'express'
 import multer from 'multer';
 
 import { CreateUserController } from './controllers/user/CreateUserController'
@@ -16,6 +16,7 @@ import { ListByMyClasseController } from './controllers/classe/ListByMyClasseCon
 
 import { SubscribeController } from './controllers/subscription/SubscribeController'
 import { WebhooksController } from './controllers/subscription/WebhooksController'
+import { CreatePortalController } from './controllers/subscription/CreatePortalController'
 
 import { isAuthenticated } from './middlewares/isAuthenticated'
 
@@ -39,6 +40,7 @@ router.post('/classes', isAuthenticated, upload.single('material'), new CreateCl
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
 
 router.post('/subscribe', isAuthenticated, new SubscribeController().handle)
-router.post('/webhooks', new WebhooksController().handle)
+router.post('/webhooks', express.raw({ type: 'application/json' }), new WebhooksController().handle)
+router.post('/create-portal', isAuthenticated, new CreatePortalController().handle)
 
 export { router };
