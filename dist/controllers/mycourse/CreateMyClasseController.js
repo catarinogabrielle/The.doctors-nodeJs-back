@@ -1,0 +1,42 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CreateMyClasseController = void 0;
+const CreateMyClasseService_1 = require("../../services/mycourse/CreateMyClasseService");
+class CreateMyClasseController {
+    handle(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { title, teachername, teacherinfo, teacherwork, description, time, link } = req.body;
+            const createMyClasseService = new CreateMyClasseService_1.CreateMyClasseService();
+            if (!req.files) {
+                throw new Error("error upload file");
+            }
+            else {
+                const files = req.files;
+                const image = files['image'][0].filename;
+                const teacherphoto = files['teacherphoto'][0].filename;
+                const myclasse = yield createMyClasseService.execute({
+                    title,
+                    image,
+                    teachername,
+                    teacherphoto,
+                    teacherwork,
+                    teacherinfo,
+                    description,
+                    time,
+                    link
+                });
+                return res.json(myclasse);
+            }
+        });
+    }
+}
+exports.CreateMyClasseController = CreateMyClasseController;
