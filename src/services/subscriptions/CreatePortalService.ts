@@ -13,7 +13,7 @@ class CreatePortalService {
             {
                 apiVersion: '2022-11-15',
                 appInfo: {
-                    name: 'The.Doctors',
+                    name: 'teste',
                     version: '1',
                 }
             }
