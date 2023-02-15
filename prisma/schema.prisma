@@ -58,6 +58,7 @@ model Myclasse {
   description  String
   time         String
   link         String
+  paymentlink  String
   created_at   DateTime? @default(now())
   updated_at   DateTime? @default(now())
   classes      Classe[]
