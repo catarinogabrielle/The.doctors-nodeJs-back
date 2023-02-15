@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateMyClasseController = void 0;
 const CreateMyClasseService_1 = require("../../services/mycourse/CreateMyClasseService");
 class CreateMyClasseController {
     handle(req, res) {

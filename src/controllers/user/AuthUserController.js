@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthUserController = void 0;
 const AuthUserService_1 = require("../../services/user/AuthUserService");
 class AuthUserController {
     handle(req, res) {

@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SubscribeMensalController = exports.SubscribeAnualController = void 0;
 const SubscribeAnualService_1 = require("../../services/subscriptions/SubscribeAnualService");
 const SubscribeMensalService_1 = require("../../services/subscriptions/SubscribeMensalService");
 class SubscribeAnualController {

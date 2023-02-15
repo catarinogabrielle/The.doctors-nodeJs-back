@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAuthenticated = void 0;
 const jsonwebtoken_1 = require("jsonwebtoken");
 function isAuthenticated(req, res, next) {
     // receber o token
@@ -11,7 +10,7 @@ function isAuthenticated(req, res, next) {
     const [, token] = authToken.split(" ");
     try {
         // validar esse token
-        const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
+        const { sub } = jsonwebtoken_1.verify(token, process.env.JWT_SECRET);
         // recuperar o id do token e colocar dentro de uma variavel user_id dentro do req.
         req.user_id = sub;
         return next();

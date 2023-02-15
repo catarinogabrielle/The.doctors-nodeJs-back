@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebhooksController = void 0;
 const stripe_1 = require("../../utils/stripe");
 const manageSubscription_1 = require("../../utils/manageSubscription");
 class WebhooksController {
@@ -27,15 +26,15 @@ class WebhooksController {
             switch (event.type) {
                 case 'customer.subscription.deleted':
                     const payment = event.data.object;
-                    yield (0, manageSubscription_1.saveSubscription)(payment.id, payment.customer.toString(), false, true);
+                    yield manageSubscription_1.saveSubscription(payment.id, payment.customer.toString(), false, true);
                     break;
                 case 'customer.subscription.updated':
                     const paymentIntent = event.data.object;
-                    yield (0, manageSubscription_1.saveSubscription)(paymentIntent.id, paymentIntent.customer.toString(), false);
+                    yield manageSubscription_1.saveSubscription(paymentIntent.id, paymentIntent.customer.toString(), false);
                     break;
                 case 'checkout.session.completed':
                     const checkoutSession = event.data.object;
-                    yield (0, manageSubscription_1.saveSubscription)(checkoutSession.subscription.toString(), checkoutSession.customer.toString(), true);
+                    yield manageSubscription_1.saveSubscription(checkoutSession.subscription.toString(), checkoutSession.customer.toString(), true);
                     break;
                 default:
                     console.log(`Evento desconhecido ${event.type}`);

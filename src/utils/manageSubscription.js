@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveSubscription = void 0;
 const stripe_1 = require("./stripe");
 const index_1 = __importDefault(require("../prisma/index"));
 function saveSubscription(subscriptionId, customerId, createAction = false, deleteAction = false) {

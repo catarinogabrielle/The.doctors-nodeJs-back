@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUserController = void 0;
 const UpdateUserService_1 = require("../../services/user/UpdateUserService");
 class UpdateUserController {
     handle(req, res) {

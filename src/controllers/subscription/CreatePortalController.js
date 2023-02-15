@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreatePortalController = void 0;
 const CreatePortalService_1 = require("../../services/subscriptions/CreatePortalService");
 class CreatePortalController {
     handle(request, response) {

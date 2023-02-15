@@ -10,7 +10,7 @@ exports.default = {
     upload(folder) {
         return {
             storage: multer_1.default.diskStorage({
-                destination: (0, path_1.resolve)(__dirname, '..', '..', folder),
+                destination: path_1.resolve(__dirname, '..', '..', folder),
                 filename: (request, file, callback) => {
                     const fileHash = crypto_1.default.randomBytes(16).toString("hex");
                     const fileName = `${fileHash}-${file.originalname}`;

@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SubscribeAnualService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const stripe_1 = __importDefault(require("stripe"));
 class SubscribeAnualService {
