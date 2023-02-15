@@ -2,8 +2,14 @@ import express, { Request, Response, NextFunction } from "express"
 import 'express-async-errors'
 import cors from 'cors'
 import path from 'path'
+import https from 'https'
+import fs from 'fs'
 
 import { router } from './routes';
+
+var privateKey = fs.readFileSync('/etc/ssl/private/private.key', 'utf8');
+var certificate = fs.readFileSync('/etc/ssl/certificate.crt', 'utf8');
+var credentials = { key: privateKey, cert: certificate };
 
 const app = express();
 
@@ -33,4 +39,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 })
 
-app.listen(3333, () => console.log('Servidor online'))
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(8443);
+//app.listen(3333, () => console.log('Servidor online'))
