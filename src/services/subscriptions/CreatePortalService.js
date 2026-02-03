@@ -20,7 +20,7 @@ class CreatePortalService {
             const stripe = new stripe_1.default(process.env.STRIPE_API_KEY, {
                 apiVersion: '2022-11-15',
                 appInfo: {
-                    name: 'The.Doctors',
+                    name: 'teste',
                     version: '1',
                 }
             });

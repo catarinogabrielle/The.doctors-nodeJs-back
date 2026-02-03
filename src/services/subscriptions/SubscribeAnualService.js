@@ -18,9 +18,9 @@ class SubscribeAnualService {
     execute({ user_id }) {
         return __awaiter(this, void 0, void 0, function* () {
             const stripe = new stripe_1.default(process.env.STRIPE_API_KEY, {
-                apiVersion: '2022-11-15',
+                apiVersion: "2022-11-15",
                 appInfo: {
-                    name: 'The.Doctors',
+                    name: 'teste',
                     version: '1',
                 }
             });

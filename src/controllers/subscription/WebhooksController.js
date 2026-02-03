@@ -15,13 +15,16 @@ class WebhooksController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             let event = request.body;
-            const signature = request.headers['stripe-signature'];
-            let endpointSecret = 'whsec_9f4a7721aa2a6925b490d62fe4cfc4980a48c7d666f9149d6df42a1701ecbacc';
-            try {
-                event = stripe_1.stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
-            }
-            catch (err) {
-                return response.sendStatus(400).send(`Webhook error: ${err.message}`);
+            let endpointSecret;
+            if (endpointSecret) {
+                const signature = request.headers['stripe-signature'];
+                try {
+                    event = stripe_1.stripe.webhooks.constructEvent(request.body, signature, endpointSecret);
+                }
+                catch (err) {
+                    console.log("Webhook signature failed", err.message);
+                    return response.sendStatus(400);
+                }
             }
             switch (event.type) {
                 case 'customer.subscription.deleted':

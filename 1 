@@ -1,0 +1,4 @@
+nohup: ignoring input
+yarn run v1.22.19
+$ ts-node src/server.ts
+Killed

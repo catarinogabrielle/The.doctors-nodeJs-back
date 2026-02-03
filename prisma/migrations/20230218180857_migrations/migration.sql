@@ -37,6 +37,7 @@ CREATE TABLE "myclasses" (
     "description" TEXT NOT NULL,
     "time" TEXT NOT NULL,
     "link" TEXT NOT NULL,
+    "paymentlink" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 

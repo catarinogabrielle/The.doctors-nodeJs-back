@@ -27,6 +27,7 @@ class ListMyClasseService {
                     teacherinfo: true,
                     description: true,
                     time: true,
+                    paymentlink: true
                 }
             });
             return myclasse;

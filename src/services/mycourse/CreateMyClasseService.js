@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateMyClasseService {
-    execute({ title, link, image, teacherphoto, teachername, teacherinfo, teacherwork, description, time }) {
+    execute({ title, link, image, teacherphoto, teachername, teacherinfo, teacherwork, description, time, paymentlink }) {
         return __awaiter(this, void 0, void 0, function* () {
             // verificar se ele colocou um titulo
             if (title === '') {
@@ -31,6 +31,7 @@ class CreateMyClasseService {
                     description: description,
                     time: time,
                     link: link,
+                    paymentlink: paymentlink
                 },
                 select: {
                     title: true,
@@ -41,7 +42,8 @@ class CreateMyClasseService {
                     teacherinfo: true,
                     description: true,
                     time: true,
-                    link: true
+                    link: true,
+                    paymentlink: true
                 }
             });
             return myclasse;

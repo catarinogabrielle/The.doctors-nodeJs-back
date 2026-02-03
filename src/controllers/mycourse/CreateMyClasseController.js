@@ -13,7 +13,7 @@ const CreateMyClasseService_1 = require("../../services/mycourse/CreateMyClasseS
 class CreateMyClasseController {
     handle(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { title, teachername, teacherinfo, teacherwork, description, time, link } = req.body;
+            const { title, teachername, teacherinfo, teacherwork, description, time, link, paymentlink } = req.body;
             const createMyClasseService = new CreateMyClasseService_1.CreateMyClasseService();
             if (!req.files) {
                 throw new Error("error upload file");
@@ -31,7 +31,8 @@ class CreateMyClasseController {
                     teacherinfo,
                     description,
                     time,
-                    link
+                    link,
+                    paymentlink
                 });
                 return res.json(myclasse);
             }

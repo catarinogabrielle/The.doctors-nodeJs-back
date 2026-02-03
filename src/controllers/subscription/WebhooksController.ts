@@ -8,14 +8,22 @@ class WebhooksController {
     async handle(request: Request, response: Response) {
         let event: Stripe.Event = request.body;
 
-        const signature = request.headers['stripe-signature']
-        let endpointSecret = 'whsec_9f4a7721aa2a6925b490d62fe4cfc4980a48c7d666f9149d6df42a1701ecbacc';
+        let endpointSecret: 'whsec_7db8e24f2862829e23e1964d850a7a6956b9b31bd08d5db15fb6311cefaf9111';
 
-        try {
-            event = stripe.webhooks.constructEvent(request.body, signature, endpointSecret)
+        if (endpointSecret) {
+            const signature = request.headers['stripe-signature']
+            try {
 
-        } catch (err) {
-            return response.sendStatus(400).send(`Webhook error: ${err.message}`);
+                event = stripe.webhooks.constructEvent(
+                    request.body,
+                    signature,
+                    endpointSecret
+                )
+
+            } catch (err) {
+                console.log("Webhook signature failed", err.message)
+                return response.sendStatus(400);
+            }
         }
 
         switch (event.type) {
@@ -54,7 +62,9 @@ class WebhooksController {
                 console.log(`Evento desconhecido ${event.type}`)
         }
 
+
         response.send();
+
 
     }
 }

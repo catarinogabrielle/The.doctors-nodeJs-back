@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: doctors-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Espanha12
+      POSTGRES_DB: thedoctors
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - doctors-net
+
+volumes:
+  pgdata:
+
+networks:
+  doctors-net:
+    driver: bridge

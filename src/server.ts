@@ -10,9 +10,7 @@ import { router } from './routes';
 var privateKey  = fs.readFileSync('/etc/ssl/private/private.key', 'utf8');
 var certificate = fs.readFileSync('/etc/ssl/certificate.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
-
 const app = express();
-
 app.use((req, res, next) => {
     if (req.originalUrl === '/webhooks') {
         next();
