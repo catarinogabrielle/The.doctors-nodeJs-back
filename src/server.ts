@@ -1,15 +1,18 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 import express, { Request, Response, NextFunction } from "express"
 import 'express-async-errors'
 import cors from 'cors'
 import path from 'path'
-import https from 'https'
+import http from 'http'
 import fs from 'fs'
 
 import { router } from './routes';
 
-var privateKey  = fs.readFileSync('/etc/ssl/private/private.key', 'utf8');
-var certificate = fs.readFileSync('/etc/ssl/certificate.crt', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
+// var privateKey  = fs.readFileSync('/etc/ssl/private/private.key', 'utf8');
+// var certificate = fs.readFileSync('/etc/ssl/certificate.crt', 'utf8');
+// var credentials = {key: privateKey, cert: certificate};
 const app = express();
 app.use((req, res, next) => {
     if (req.originalUrl === '/webhooks') {
@@ -33,6 +36,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 })
 
-var httpsServer = https.createServer(credentials, app);
+var httpsServer = http.createServer({}, app);
 httpsServer.listen(8443);
+console.log('Servidor online')
 //app.listen(3333, () => console.log('Servidor online'))

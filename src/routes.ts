@@ -10,6 +10,7 @@ import { CreateMyClasseController } from './controllers/mycourse/CreateMyClasseC
 import { ListMyClasseController } from './controllers/mycourse/ListMyClasseController'
 import { DetailMyClasseController } from './controllers/mycourse/DetailMyClasseController'
 import { FindClasseController } from './controllers/mycourse/FindClasseController'
+import { DeleteMyClasseController } from './controllers/mycourse/DeleteMyClasseController'
 
 import { CreateClasseController } from './controllers/classe/CreateClasseController'
 import { ListByMyClasseController } from './controllers/classe/ListByMyClasseController'
@@ -32,9 +33,10 @@ router.post('/session', new AuthUserController().handle)
 router.get('/me', isAuthenticated, new DetailUserController().handle)
 
 router.post('/myclasses', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new CreateMyClasseController().handle)
-router.get('/myclasses', isAuthenticated, new ListMyClasseController().handle)
 router.get('/myclasses/details', isAuthenticated, new DetailMyClasseController().handle)
 router.get('/myclasses/search', isAuthenticated, new FindClasseController().handle)
+router.get('/myclasses', isAuthenticated, new ListMyClasseController().handle)
+router.delete('/myclasses/delete', isAuthenticated, new DeleteMyClasseController().handle)
 
 router.post('/classes', isAuthenticated, upload.single('material'), new CreateClasseController().handle)
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
