@@ -7,23 +7,17 @@ class CreateClasseController {
 
         const createMyClasseService = new CreateClasseService();
 
-        if (!req.file) {
-            throw new Error("error upload file")
-        } else {
+        const material = req.file ? req.file.filename : null;
 
-            const { filename: material } = req.file
+        const classe = await createMyClasseService.execute({
+            material,
+            description,
+            myclasse_id,
+            title,
+            link,
+        });
 
-            const classe = await createMyClasseService.execute({
-                material,
-                description,
-                myclasse_id,
-                title,
-                link,
-            });
-
-            return res.json(classe);
-
-        }
+        return res.json(classe);
     }
 }
 
