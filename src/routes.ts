@@ -6,6 +6,7 @@ import { AuthUserController } from './controllers/user/AuthUserController'
 import { DetailUserController } from './controllers/user/DetailUserController'
 import { UpdateUserController } from './controllers/user/UpdateUserController'
 import { ListStudentsController } from './controllers/user/ListStudentsController'
+import { CreateTeacherController } from './controllers/user/CreateTeacherController'
 
 import { CreateMyClasseController } from './controllers/mycourse/CreateMyClasseController'
 import { ListMyClasseController } from './controllers/mycourse/ListMyClasseController'
@@ -23,6 +24,7 @@ import { WebhooksController } from './controllers/subscription/WebhooksControlle
 import { CreatePortalController } from './controllers/subscription/CreatePortalController'
 
 import { isAuthenticated } from './middlewares/isAuthenticated'
+import { isGestor } from './middlewares/isGestor'
 
 import uploadConfig from './config/multer'
 
@@ -35,6 +37,7 @@ router.put('/users/update', isAuthenticated, new UpdateUserController().handle)
 router.post('/session', new AuthUserController().handle)
 router.get('/me', isAuthenticated, new DetailUserController().handle)
 router.get('/students', isAuthenticated, new ListStudentsController().handle)
+router.post('/users/teacher', isAuthenticated, isGestor, new CreateTeacherController().handle)
 
 router.post('/myclasses', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new CreateMyClasseController().handle)
 router.put('/myclasses/update', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new UpdateMyClasseController().handle)
