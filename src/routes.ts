@@ -5,6 +5,7 @@ import { CreateUserController } from './controllers/user/CreateUserController'
 import { AuthUserController } from './controllers/user/AuthUserController'
 import { DetailUserController } from './controllers/user/DetailUserController'
 import { UpdateUserController } from './controllers/user/UpdateUserController'
+import { ListStudentsController } from './controllers/user/ListStudentsController'
 
 import { CreateMyClasseController } from './controllers/mycourse/CreateMyClasseController'
 import { ListMyClasseController } from './controllers/mycourse/ListMyClasseController'
@@ -30,9 +31,10 @@ const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
 
 router.post('/users', new CreateUserController().handle)
-router.put('/users/update', new UpdateUserController().handle)
+router.put('/users/update', isAuthenticated, new UpdateUserController().handle)
 router.post('/session', new AuthUserController().handle)
 router.get('/me', isAuthenticated, new DetailUserController().handle)
+router.get('/students', isAuthenticated, new ListStudentsController().handle)
 
 router.post('/myclasses', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new CreateMyClasseController().handle)
 router.put('/myclasses/update', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new UpdateMyClasseController().handle)
