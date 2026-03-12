@@ -18,6 +18,7 @@ import { UpdateMyClasseController } from './controllers/mycourse/UpdateMyClasseC
 import { CreateClasseController } from './controllers/classe/CreateClasseController'
 import { ListByMyClasseController } from './controllers/classe/ListByMyClasseController'
 import { UpdateClasseController } from './controllers/classe/UpdateClasseController'
+import { DeleteClasseController } from './controllers/classe/DeleteClasseController'
 
 import { SubscribeAnualController, SubscribeMensalController } from './controllers/subscription/SubscribeController'
 import { WebhooksController } from './controllers/subscription/WebhooksController'
@@ -48,6 +49,7 @@ router.delete('/myclasses/delete', isAuthenticated, new DeleteMyClasseController
 
 router.post('/classes', isAuthenticated, upload.single('material'), new CreateClasseController().handle)
 router.put('/classes/update', isAuthenticated, upload.single('material'), new UpdateClasseController().handle)
+router.delete('/classes/delete', isAuthenticated, new DeleteClasseController().handle)
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
 
 router.post('/subscribe/yearly', isAuthenticated, new SubscribeAnualController().handle)

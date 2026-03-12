@@ -18,7 +18,7 @@ class CreateClasseService {
 
         const classe = await prismaClient.classe.create({
             data: {
-                material: material,
+                material: material ?? null,
                 description: description,
                 myclasse_id: myclasse_id,
                 title: title,
