@@ -24,7 +24,7 @@ class DeleteMyClasseService {
             throw new Error("Usuário não encontrado");
         }
 
-        if (user.type !== "teacher") {
+        if (user.type !== "teacher" && user.type !== "gestor") {
             throw new Error("Apenas professores podem excluir cursos");
         }
 
