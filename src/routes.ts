@@ -23,6 +23,7 @@ import { DeleteClasseController } from './controllers/classe/DeleteClasseControl
 import { SubscribeAnualController, SubscribeMensalController } from './controllers/subscription/SubscribeController'
 import { WebhooksController } from './controllers/subscription/WebhooksController'
 import { CreatePortalController } from './controllers/subscription/CreatePortalController'
+import { WebhookLive7Controller } from './controllers/webhook/WebhookLive7Controller'
 
 import { isAuthenticated } from './middlewares/isAuthenticated'
 import { isGestor } from './middlewares/isGestor'
@@ -56,5 +57,7 @@ router.post('/subscribe/yearly', isAuthenticated, new SubscribeAnualController()
 router.post('/subscribe/monthly', isAuthenticated, new SubscribeMensalController().handle)
 router.post('/webhooks', express.raw({ type: 'application/json' }), new WebhooksController().handle)
 router.post('/create-portal', isAuthenticated, new CreatePortalController().handle)
+
+router.post('/webhook/live7/:courseId', new WebhookLive7Controller().handle)
 
 export { router };
