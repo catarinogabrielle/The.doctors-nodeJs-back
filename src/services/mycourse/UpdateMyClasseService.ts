@@ -63,6 +63,7 @@ class UpdateMyClasseService {
                 time: true,
                 link: true,
                 paymentlink: true,
+                category: true,
             },
         })
 
