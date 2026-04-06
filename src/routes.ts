@@ -10,6 +10,7 @@ import { CreateTeacherController } from './controllers/user/CreateTeacherControl
 
 import { CreateMyClasseController } from './controllers/mycourse/CreateMyClasseController'
 import { ListMyClasseController } from './controllers/mycourse/ListMyClasseController'
+import { ListPublicMyClasseController } from './controllers/mycourse/ListPublicMyClasseController'
 import { DetailMyClasseController } from './controllers/mycourse/DetailMyClasseController'
 import { FindClasseController } from './controllers/mycourse/FindClasseController'
 import { DeleteMyClasseController } from './controllers/mycourse/DeleteMyClasseController'
@@ -43,6 +44,7 @@ router.post('/users/teacher', isAuthenticated, isGestor, new CreateTeacherContro
 
 router.post('/myclasses', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new CreateMyClasseController().handle)
 router.put('/myclasses/update', isAuthenticated, upload.fields([{ name: 'teacherphoto', maxCount: 1 }, { name: 'image', maxCount: 1 }]), new UpdateMyClasseController().handle)
+router.get('/myclasses/public', new ListPublicMyClasseController().handle)
 router.get('/myclasses/details', isAuthenticated, new DetailMyClasseController().handle)
 router.get('/myclasses/search', isAuthenticated, new FindClasseController().handle)
 router.get('/myclasses', isAuthenticated, new ListMyClasseController().handle)

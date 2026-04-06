@@ -12,6 +12,7 @@ interface UpdateMyclasseRequest {
     time?: string;
     link?: string;
     paymentlink?: string;
+    category?: string;
 }
 
 class UpdateMyClasseService {
@@ -27,6 +28,7 @@ class UpdateMyClasseService {
         time,
         link,
         paymentlink,
+        category,
     }: UpdateMyclasseRequest) {
         if (title !== undefined && title.trim() === '') {
             throw new Error("Title invalid");
@@ -47,6 +49,7 @@ class UpdateMyClasseService {
                 time,
                 link,
                 paymentlink,
+                category,
             },
             select: {
                 id: true,

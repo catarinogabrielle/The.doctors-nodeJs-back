@@ -13,6 +13,7 @@ class UpdateMyClasseController {
             time,
             link,
             paymentlink,
+            category,
         } = req.body;
 
         const updateMyClasseService = new UpdateMyClasseService();
@@ -33,6 +34,7 @@ class UpdateMyClasseController {
             time,
             link,
             paymentlink,
+            category,
         });
 
         return res.json(myclasse);
