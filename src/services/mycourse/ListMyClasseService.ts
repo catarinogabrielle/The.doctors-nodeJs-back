@@ -13,6 +13,7 @@ class ListMyClasseService {
                 teacherinfo: true,
                 description: true,
                 time: true,
+                link: true,
                 paymentlink: true,
                 category: true
             }
