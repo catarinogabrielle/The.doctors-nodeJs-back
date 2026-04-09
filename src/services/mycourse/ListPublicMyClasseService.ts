@@ -9,8 +9,11 @@ class ListPublicMyClasseService {
                 image: true,
                 teachername: true,
                 teacherphoto: true,
+                teacherwork: true,
+                teacherinfo: true,
                 description: true,
                 time: true,
+                link: true,
                 category: true,
                 paymentlink: true,
                 _count: {
