@@ -37,7 +37,7 @@ class WebhookLive7Service {
             console.log(`[WEBHOOK LIVE7 SERVICE] Curso não encontrado: ${courseId}`);
             throw new Error('Curso não encontrado');
         }
-        console.log(`[WEBHOOK LIVE7 SERVICE] Curso encontrado: "${course.name}"`);
+        console.log(`[WEBHOOK LIVE7 SERVICE] Curso encontrado: "${course.title}"`);
 
         // Buscar usuário pelo email
         console.log(`[WEBHOOK LIVE7 SERVICE] Buscando usuário pelo email: ${comprador.email}`);
@@ -86,7 +86,7 @@ class WebhookLive7Service {
             data: { mycourse_id: updatedCourses }
         });
 
-        console.log(`[WEBHOOK LIVE7 SERVICE] Usuário ${user.email} matriculado no curso "${course.name}" (${courseId})`);
+        console.log(`[WEBHOOK LIVE7 SERVICE] Usuário ${user.email} matriculado no curso "${course.title}" (${courseId})`);
         console.log(`[WEBHOOK LIVE7 SERVICE] Resumo: userCreated=${userCreated}, courseLinked=true`);
 
         return { message: 'Usuário matriculado com sucesso', userCreated, courseLinked: true };
