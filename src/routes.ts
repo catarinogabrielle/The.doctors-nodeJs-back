@@ -21,6 +21,7 @@ import { CreateClasseController } from './controllers/classe/CreateClasseControl
 import { ListByMyClasseController } from './controllers/classe/ListByMyClasseController'
 import { UpdateClasseController } from './controllers/classe/UpdateClasseController'
 import { DeleteClasseController } from './controllers/classe/DeleteClasseController'
+import { ReorderClassesController } from './controllers/classe/ReorderClassesController'
 
 import { SubscribeAnualController, SubscribeMensalController } from './controllers/subscription/SubscribeController'
 import { WebhooksController } from './controllers/subscription/WebhooksController'
@@ -54,6 +55,7 @@ router.delete('/myclasses/delete', isAuthenticated, new DeleteMyClasseController
 
 router.post('/classes', isAuthenticated, upload.single('material'), new CreateClasseController().handle)
 router.put('/classes/update', isAuthenticated, upload.single('material'), new UpdateClasseController().handle)
+router.put('/classes/reorder', isAuthenticated, new ReorderClassesController().handle)
 router.delete('/classes/delete', isAuthenticated, new DeleteClasseController().handle)
 router.get('/myclasses/classes', isAuthenticated, new ListByMyClasseController().handle)
 

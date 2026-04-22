@@ -71,6 +71,7 @@ model Myclasse {
 model Classe {
   id          String    @id @default(uuid())
   title       String
+  sort_order  Int       @default(0)
   status      Boolean   @default(false)
   draft       Boolean   @default(true)
   material    String?

@@ -11,6 +11,10 @@ class DetailMyClasseService {
             where: {
                 myclasse_id: myclasse_id
             },
+            orderBy: [
+                { sort_order: 'asc' },
+                { created_at: 'asc' }
+            ],
             include: {
                 myclasse: true,
             }

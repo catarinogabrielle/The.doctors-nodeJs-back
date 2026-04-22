@@ -37,6 +37,7 @@ class UpdateClasseService {
                 title: true,
                 description: true,
                 link: true,
+                sort_order: true,
                 status: true,
                 draft: true,
                 material: true,

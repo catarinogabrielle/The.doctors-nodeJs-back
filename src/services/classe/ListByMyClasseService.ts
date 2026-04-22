@@ -10,7 +10,11 @@ class ListByMyClasseService {
         const findByMyClasse = await prismaClient.classe.findMany({
             where: {
                 myclasse_id: myclasse_id,
-            }
+            },
+            orderBy: [
+                { sort_order: 'asc' },
+                { created_at: 'asc' }
+            ]
         })
 
         return findByMyClasse;
